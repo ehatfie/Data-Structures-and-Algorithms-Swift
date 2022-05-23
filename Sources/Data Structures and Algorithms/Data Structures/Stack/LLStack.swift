@@ -7,31 +7,59 @@
 
 import Foundation
 
+public func traverseNodes(head: Node, index: Int) {
+    print("index \(index) value \(head.value)")
+    
+    guard let node = head.next else {
+        return
+    }
+    
+    traverseNodes(head: node, index: index + 1)
+}
+
 
 public class LLStack: Stack {
-    var data: LinkedList
+    var head: Node?
+    var count: Int
     
     public init() {
-        self.data = LinkedList()
+        self.head = nil
+        self.count = 0
     }
     
     public func printStack(_ prefix: String) {
-        data.printList(prefix: prefix)
+        print("\(prefix) - \(self.count)")
+        guard let head = self.head else {
+            return
+        }
+        traverseNodes(head: head, index: 0)
     }
     
     public func push(value: Int) {
-        data.insertFront(value: value)
+       let newNode = Node(value: value, next: nil)
+        
+        newNode.next = self.head
+        self.head = newNode
+        
+        count += 1
     }
     
     public func pop() -> Int? {
-        return data.pop()?.value
+        guard let current = self.head else {
+            return nil
+        }
+        
+        self.head = current.next
+        count -= 1
+        
+        return current.value
     }
     
-    public func top() -> Node? {
-        return data.head
+    public func top() -> Int? {
+        return self.head?.value
     }
     
     public func isEmpty() -> Bool {
-        return data.head == nil
+        return self.head == nil
     }
 }

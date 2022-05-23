@@ -10,7 +10,7 @@ import Foundation
 public protocol Stack {
     func push(value: Int)
     func pop() -> Int?
-    func top() -> Node?
+    func top() -> Int?
     func isEmpty() -> Bool
     func printStack(_ prefix: String)
 }

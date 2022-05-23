@@ -33,9 +33,11 @@ public final class Application {
     
     func stackOperations(stackOps: StackOperations2.Type) {
         let stack = LLStack()
-        let ops = StackOps2(stack: stack)
+        let llOps = StackOps2(stack: stack)
         
-        ops.run()
+        llOps.run()
+        
+        let arrayOps = StackOps2(stack: ArrayStack(maxLength: 10))
     }
     
     func createLinkedList() -> LinkedList {

@@ -23,7 +23,7 @@ class StackOps: StackOperations {
     
     static func top(stack: Stack) {
         let top = stack.top()
-        print("top \(top?.value)")
+        print("top \(top)")
     }
     
     static func isEmpty(stack: Stack) {
@@ -51,7 +51,7 @@ class StackOps2: StackOperations2 {
     
     func top() {
         let top = stack.top()
-        print("top \(top?.value)")
+        print("top \(top)")
     }
     
     func isEmpty() {
