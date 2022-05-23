@@ -17,10 +17,11 @@ public final class Application {
     
     public func run() {
         print("app run")
-        
-        //getNLinkedList(index: 2)
+    
         let list = createLinkedList()
         
+        Operations.getNode(list: list, index: 2)
+        Operations.containsValue(list: list, value: 3)
         Operations.insertFront(list: list, value: 5)
         Operations.remove(list: list, value: 5)
         
@@ -28,29 +29,5 @@ public final class Application {
     
     func createLinkedList() -> LinkedList {
         return LinkedList.defaultList()
-    }
-    
-    func getNLinkedList(index: Int) {
-        let linkedList = createLinkedList()
-        
-        let foo = linkedList.getItem(index: index, recursive: true)
-        
-        print("got foo ", foo)
-        
-        traverseList(list: linkedList)
-    }
-    
-    func traverseList(list: LinkedList) {
-        traverseNodes(head: list.head, index: 0)
-    }
-    
-    func traverseNodes(head: Node, index: Int) {
-        print("index \(index) value \(head.value)")
-        
-        guard let node = head.next else {
-            return
-        }
-        
-        traverseNodes(head: node, index: index + 1)
     }
 }

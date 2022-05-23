@@ -9,7 +9,7 @@ import Foundation
 
 
 public class LinkedList {
-    public var head: Node
+    public var head: Node?
     
     public init(head: Node) {
         self.head = head
@@ -30,7 +30,10 @@ public class LinkedList {
     
     public func printList(prefix: String = "") {
         print(prefix)
-        traverseNodes(head: self.head, index: 0)
+        guard let head = self.head else {
+            return
+        }
+        traverseNodes(head: head, index: 0)
     }
     
     /**
@@ -84,10 +87,17 @@ public class LinkedList {
         traverseNodes(head: node, index: index + 1)
     }
     
+    public func containsValue(value: Int) -> Bool {
+        guard let head = self.head else {
+            return false
+        }
+        return containsValue(head: head, value: value)
+    }
+    
     /**
         Returns true or false if the list ocntains a node with value
      */
-    public func hasValue(head: Node, value: Int) -> Bool {
+    public func containsValue(head: Node, value: Int) -> Bool {
         var current: Node? = head
         
         while current != nil {
@@ -112,22 +122,15 @@ extension LinkedList {
         var current: Node? = head
         var previous: Node? = nil
         
-        guard current?.value != value else {
+        guard head?.value != value else {
+            let current = head
             self.head = current?.next
-            return
+            return current
         }
 
-        while current != nil {
-            // make sure there is a value
-            
-            guard current?.value != value else {
-                print("Got value \(current?.value)")
-                break
-            }
-            
+        while current != nil && current?.value != value {
             previous = current
             current = current?.next
-            
         }
         
         let next = current?.next

@@ -13,6 +13,17 @@ class Operations {
 }
 
 extension Operations: LinkedListOperations {
+    static func getNode(list: LinkedList, index: Int) {
+        self.run(list) { _ = $0.getItem(index: index, recursive: true)}
+    }
+    
+    static func containsValue(list: LinkedList, value: Int) {
+        self.run(list) { list in
+            let result = list.containsValue(value: value)
+            print("List contains \(value): \(result)")
+        }
+    }
+    
     static func insertFront(list: LinkedList, value: Int) {
         print("Operations - insert front \(value)")
         list.printList(prefix: "Pre")

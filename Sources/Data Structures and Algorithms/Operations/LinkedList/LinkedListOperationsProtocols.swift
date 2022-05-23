@@ -14,6 +14,8 @@ class Operations {
 
 
 public protocol LinkedListOperations {
+    static func getNode(list: LinkedList, index: Int)
+    static func containsValue(list: LinkedList, value: Int)
     static func insertFront(list: LinkedList, value: Int)
     static func remove(list: LinkedList, value: Int)
 }
