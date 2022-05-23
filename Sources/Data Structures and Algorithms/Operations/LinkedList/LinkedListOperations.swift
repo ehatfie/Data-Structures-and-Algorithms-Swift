@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+
+//class Operations {
+//    
+//}
+//// should these be defined in App?
+//extension Operations: LinkedListOperations {
+//    
+//}

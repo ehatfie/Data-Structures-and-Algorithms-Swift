@@ -13,6 +13,7 @@ class Operations {
 }
 
 
-protocol LinkedListOperations {
-    public static func insertFront(value: Int)
+public protocol LinkedListOperations {
+    static func insertFront(list: LinkedList, value: Int)
+    static func remove(list: LinkedList, value: Int)
 }

@@ -1,8 +1,144 @@
 //
-//  File.swift
+//  LinkedList.swift
 //  
 //
 //  Created by Erik Hatfield on 5/23/22.
 //
 
 import Foundation
+
+
+public class LinkedList {
+    public var head: Node
+    
+    public init(head: Node) {
+        self.head = head
+    }
+    
+    public static func generate(count: Int) -> LinkedList? {
+
+        return nil
+    }
+    
+    public static func defaultList() -> LinkedList {
+        let third = Node(value: 3, next: nil)
+        let second = Node(value: 2, next: third)
+        let head = Node(value: 1, next: second)
+        
+        return LinkedList(head: head)
+    }
+    
+    public func printList(prefix: String = "") {
+        print(prefix)
+        traverseNodes(head: self.head, index: 0)
+    }
+    
+    /**
+     Return Node at index iteritively
+     */
+    public func getItem(index: Int, recursive: Bool) -> Node? {
+        print("get item index ", index)
+        var count = 0
+        var current: Node? = head
+        
+        if !recursive {
+            while current?.next != nil {
+                // exit condition
+                guard count != index else {
+                    return current
+                }
+                
+                current = current?.next
+                count += 1
+            }
+        } else {
+            return getItemR(head: current!, index: index, count: 0)
+        }
+        
+        
+        return nil
+    }
+    
+    /**
+        Return Node at index recursively
+     */
+    public func getItemR(head: Node, index: Int, count: Int) -> Node? {
+        guard index != count else {
+            return head
+        }
+        
+        guard let node = head.next else {
+            return nil
+        }
+        
+        return getItemR(head: node, index: index, count: count + 1)
+    }
+    
+    public func traverseNodes(head: Node, index: Int) {
+        print("index \(index) value \(head.value)")
+        
+        guard let node = head.next else {
+            return
+        }
+        
+        traverseNodes(head: node, index: index + 1)
+    }
+    
+    /**
+        Returns true or false if the list ocntains a node with value
+     */
+    public func hasValue(head: Node, value: Int) -> Bool {
+        var current: Node? = head
+        
+        while current != nil {
+            if current?.value == value {
+                return true
+            }
+            
+            current = current?.next
+        }
+        
+        return false
+    }
+}
+
+extension LinkedList {
+    public func insertFront(value: Int) {
+        let newNode = Node(value: value, next: head)
+        head = newNode
+    }
+    
+    public func remove(value: Int) -> Node? {
+        var current: Node? = head
+        var previous: Node? = nil
+        
+        guard current?.value != value else {
+            self.head = current?.next
+            return
+        }
+
+        while current != nil {
+            // make sure there is a value
+            
+            guard current?.value != value else {
+                print("Got value \(current?.value)")
+                break
+            }
+            
+            previous = current
+            current = current?.next
+            
+        }
+        
+        let next = current?.next
+        if next == nil {
+            print("nil next ")
+        }
+        
+        previous?.next = next
+        
+        return current
+    }
+}
+
+

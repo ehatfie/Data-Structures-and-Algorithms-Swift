@@ -21,6 +21,8 @@ let package = Package(
         .target(
             name: "Data Structures and Algorithms",
             dependencies: []),
+        .target(name: "App",dependencies: [.target(name: "Data Structures and Algorithms")]),
+        .target(name: "Run", dependencies: [.target(name: "App")]),
         .testTarget(
             name: "Data Structures and AlgorithmsTests",
             dependencies: ["Data Structures and Algorithms"]),
