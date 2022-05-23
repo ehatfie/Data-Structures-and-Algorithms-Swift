@@ -9,7 +9,7 @@ import Foundation
 import Data_Structures_and_Algorithms
 
 class Operations {
-    
+    static let stack: StackOperations.Type = StackOps.self
 }
 
 extension Operations: LinkedListOperations {

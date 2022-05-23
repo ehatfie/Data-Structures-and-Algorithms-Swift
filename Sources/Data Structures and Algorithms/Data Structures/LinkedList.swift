@@ -14,6 +14,12 @@ public class LinkedList {
     
     public var length: Int
     
+    public init() {
+        self.head = nil
+        self.tail = nil
+        self.length = 0
+    }
+    
     public init(head: Node) {
         self.head = head
         self.tail = head
@@ -33,7 +39,7 @@ public class LinkedList {
     }
     
     public func printList(prefix: String = "") {
-        print(prefix)
+        print("\(prefix) - \(length)")
         guard let head = self.head else {
             return
         }
@@ -144,6 +150,7 @@ extension LinkedList {
         guard head?.value != value else {
             let current = head
             self.head = current?.next
+            self.length -= 1
             return current
         }
 
@@ -159,6 +166,29 @@ extension LinkedList {
         
         previous?.next = next
         
+        return current
+    }
+    
+    public func pop() -> Node? {
+        var current: Node? = head
+        
+        // want to remove head and replace it with head.next
+        
+        guard let head = self.head else {
+            return nil
+        }
+        
+        // need replace head with head.next
+        // need to remove tail if head === tail
+        // need to decrement
+        
+        if self.tail === head {
+            tail == nil
+        }
+        
+        self.head = head.next
+        
+        length -= 1
         return current
     }
 }

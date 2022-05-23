@@ -20,3 +20,5 @@ public protocol LinkedListOperations {
     static func insertEnd(list: LinkedList, value:Int)
     static func remove(list: LinkedList, value: Int)
 }
+
+
