@@ -23,6 +23,7 @@ public final class Application {
         Operations.getNode(list: list, index: 2)
         Operations.containsValue(list: list, value: 3)
         Operations.insertFront(list: list, value: 5)
+        Operations.insertEnd(list: list, value: 10)
         Operations.remove(list: list, value: 5)
         
     }

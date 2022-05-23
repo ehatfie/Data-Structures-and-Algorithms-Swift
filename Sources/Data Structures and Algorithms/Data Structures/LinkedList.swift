@@ -10,9 +10,14 @@ import Foundation
 
 public class LinkedList {
     public var head: Node?
+    public var tail: Node?
+    
+    public var length: Int
     
     public init(head: Node) {
         self.head = head
+        self.tail = head
+        self.length = 1
     }
     
     public static func generate(count: Int) -> LinkedList? {
@@ -21,11 +26,10 @@ public class LinkedList {
     }
     
     public static func defaultList() -> LinkedList {
-        let third = Node(value: 3, next: nil)
-        let second = Node(value: 2, next: third)
-        let head = Node(value: 1, next: second)
-        
-        return LinkedList(head: head)
+        let list = LinkedList(head: Node(value: 1, next: nil))
+        list.insertEnd(value: 2)
+        list.insertEnd(value: 3)
+        return list
     }
     
     public func printList(prefix: String = "") {
@@ -57,7 +61,6 @@ public class LinkedList {
         } else {
             return getItemR(head: current!, index: index, count: 0)
         }
-        
         
         return nil
     }
@@ -115,7 +118,23 @@ public class LinkedList {
 extension LinkedList {
     public func insertFront(value: Int) {
         let newNode = Node(value: value, next: head)
+        
         head = newNode
+        length += 1
+    }
+    
+    public func insertEnd(value: Int) {
+        let newNode = Node(value: value, next: nil)
+        
+        guard self.head != nil else {
+            head = newNode
+            tail = newNode
+            return
+        }
+        
+        tail?.next = newNode
+        tail = newNode
+        length += 1
     }
     
     public func remove(value: Int) -> Node? {

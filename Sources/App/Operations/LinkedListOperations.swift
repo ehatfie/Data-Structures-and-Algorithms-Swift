@@ -32,6 +32,13 @@ extension Operations: LinkedListOperations {
         print("")
     }
     
+    static func insertEnd(list: LinkedList, value: Int) {
+        print("Operations - insert end \(value)")
+        self.run(list) { list in
+            list.insertEnd(value: value)
+        }
+    }
+    
     static func remove(list: LinkedList, value: Int) {
         print("Operations - remove \(value)")
         self.run(list) { _ = $0.remove(value: value) }
