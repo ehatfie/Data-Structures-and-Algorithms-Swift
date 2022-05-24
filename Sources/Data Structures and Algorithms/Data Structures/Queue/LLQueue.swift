@@ -38,6 +38,14 @@ public class LLQueue: LLQueueI {
         return current?.value
     }
     
+    public func peek() -> Int? {
+        return front?.value
+    }
+    
+    public func isEmpty() -> Bool {
+        return front == nil
+    }
+    
     public func printData() {
         var current = front
         var count = 0

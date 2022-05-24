@@ -45,6 +45,14 @@ public class CircularQueue: CircularQueueI {
         return entry
     }
     
+    public func peek() -> Int? {
+        return data[frontIndex]
+    }
+    
+    public func isEmpty() -> Bool {
+        return frontIndex == rearIndex
+    }
+    
     public func printData() {
         let prefix = "["
         let content = data.reduce("", { result, next -> String in

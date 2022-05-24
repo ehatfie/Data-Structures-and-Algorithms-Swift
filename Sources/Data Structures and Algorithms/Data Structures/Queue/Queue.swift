@@ -10,6 +10,8 @@ import Foundation
 public protocol QueueI {
     func enqueue(value: Int)
     func dequeue() -> Int?
+    func peek() -> Int?
+    func isEmpty() -> Bool
     func printData()
 }
 
