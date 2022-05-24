@@ -26,3 +26,12 @@ public protocol LLQueueI: QueueI {
     var front: Node? { get set }
     var rear: Node? { get set }
 }
+
+public protocol DEQueueI: QueueI {
+    var front: Node2? { get set }
+    var rear: Node2? { get set }
+    
+    func enqueue2(value: Int)
+    func dequeue2(value: Int) -> Int?
+    func peekRear() -> Int?
+}

@@ -47,6 +47,9 @@ public final class Application {
         
         let llQueueOps = QueueOps(queue: LLQueue())
         llQueueOps.run()
+        
+        let deQueueOps = QueueOps(queue: DEQueue())
+        deQueueOps.run()
     }
     
     func createLinkedList() -> LinkedList {
