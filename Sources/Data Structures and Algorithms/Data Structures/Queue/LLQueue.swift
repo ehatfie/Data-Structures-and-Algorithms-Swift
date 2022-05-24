@@ -17,7 +17,6 @@ public class LLQueue: LLQueueI {
     }
     
     public func enqueue(value: Int) {
-        print("enqueue \(value)")
         let newNode = Node(value: value, next: nil)
         
         guard front != nil else {
@@ -57,6 +56,6 @@ public class LLQueue: LLQueueI {
             current = current?.next
         }
         
-        print("number string ", numberString)
+        print(numberString)
     }
 }
