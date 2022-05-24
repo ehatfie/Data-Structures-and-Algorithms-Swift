@@ -42,7 +42,9 @@ public final class Application {
     }
     
     func queueOperations() {
-        let queue = CircularQueue(maxSize: 10)
+        let queueOps = QueueOps(queue: CircularQueue(maxSize: 10))
+        
+        queueOps.run()
     }
     
     func createLinkedList() -> LinkedList {
