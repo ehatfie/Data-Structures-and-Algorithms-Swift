@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  QueueOperations.swift
 //  
 //
 //  Created by Erik Hatfield on 5/24/22.
@@ -24,9 +24,17 @@ class QueueOps {
     
     func run() {
         print("circular queue ")
-        for i in 0...queue.maxSize {
+        var count = 15
+        
+        // fill circular queue
+        if let circQueue = queue as? CircularQueueI {
+            count = circQueue.maxSize
+        }
+        
+        for i in 0...10 {
             queue.enqueue(value: i)
         }
+        
         enqueue(value: 11)
         printData()
         dequeue()
