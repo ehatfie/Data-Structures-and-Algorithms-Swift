@@ -46,16 +46,16 @@ class StackOps2: StackOperations2 {
     
     func pop() {
         let result = stack.pop()
-        print("popped ", result)
+        print("popped \(result) \n")
     }
     
     func top() {
         let top = stack.top()
-        print("top \(top)")
+        print("top \(top) \n")
     }
     
     func isEmpty() {
-        print("is empty \(stack.isEmpty())")
+        print("is empty \(stack.isEmpty()) \n")
     }
     
     func run() {
@@ -67,5 +67,6 @@ class StackOps2: StackOperations2 {
         pop()
         pop()
         isEmpty()
+        pop()
     }
 }

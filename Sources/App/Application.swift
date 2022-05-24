@@ -19,7 +19,8 @@ public final class Application {
         print("app run")
     
         // linkedListOperations()
-        stackOperations(stackOps: StackOps2.self)
+        // stackOperations(stackOps: StackOps2.self)
+        queueOperations()
     }
     
     func linkedListOperations() {
@@ -38,6 +39,10 @@ public final class Application {
         llOps.run()
         
         let arrayOps = StackOps2(stack: ArrayStack(maxLength: 10))
+    }
+    
+    func queueOperations() {
+        let queue = CircularQueue(maxSize: 10)
     }
     
     func createLinkedList() -> LinkedList {
