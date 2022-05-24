@@ -7,39 +7,35 @@
 
 import Foundation
 
-protocol QueueI {
+public protocol QueueI {
     var data: [Int?] { get set }
     var frontIndex: Int { get set }
     var rearIndex: Int { get set }
     var maxSize: Int { get set }
     
     func enqueue(value: Int)
-    func dequeue()
+    func dequeue() -> Int?
+    
+    func printData()
 }
 
 public class CircularQueue: QueueI {
-    var data: [Int?]
-    var frontIndex: Int
-    var rearIndex: Int
-    var maxSize: Int
+    public var data: [Int?]
+    public var frontIndex: Int
+    public var rearIndex: Int
+    public var maxSize: Int
     
     public init(maxSize: Int) {
         self.data = [Int?](repeating: nil, count: 10)
         self.frontIndex = 0
         self.rearIndex = -1
         self.maxSize = maxSize
-        
-        for i in 0..<maxSize {
-            enqueue(value: i)
-        }
-        enqueue(value: 11)
-        printMe(data)
     }
     
-    func enqueue(value: Int) {
+    public func enqueue(value: Int) {
         var targetIndex = rearIndex + 1
         
-        printMe(data)
+        printData()
         
         if targetIndex == maxSize {
             targetIndex = 0
@@ -48,28 +44,34 @@ public class CircularQueue: QueueI {
         
         data[targetIndex] = value
         rearIndex = targetIndex
-        
-        
-        print("frontIndex: \(frontIndex) rearIndex: \(rearIndex) \n")
     }
     
-    func dequeue() {
+    public func dequeue() -> Int? {
+        //print("dequeue")
         let entry = data[frontIndex]
-        data[frontIndex] = nil
-        let newFront = frontIndex
         
-        print("old first \(frontIndex) rear \(rearIndex) new first \(newFront)")
+        data[frontIndex] = nil
+        
+        let newFront = frontIndex + 1
+        frontIndex = newFront
+        
+        return entry
     }
     
-    func printMe(_ numbers: [Int?]) {
-        let nums = numbers.compactMap({$0})
-        let string = "values:[" + nums.reduce("", { result, next -> String in
+    public func printData() {
+        let prefix = "["
+        let content = data.reduce("", { result, next -> String in
+            let numString = next != nil ? " \(next!)" : " _"
+            
             if result.isEmpty {
-                return "\(next)"
+                return numString
             }
+            
             let prefix = result.isEmpty ? "" : ","
-            return result + prefix + "\(next)"
-        }) + "]"
+            return result + prefix + numString
+        })
+        let postfix = "]"
+        let string = prefix + content + postfix
         
         print(string)
     }
