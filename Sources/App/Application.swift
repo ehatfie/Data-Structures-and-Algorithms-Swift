@@ -20,7 +20,8 @@ public final class Application {
     
         // linkedListOperations()
         // stackOperations(stackOps: StackOps2.self)
-        queueOperations()
+        // queueOperations()
+        treeOperations()
     }
     
     func linkedListOperations() {
@@ -50,6 +51,17 @@ public final class Application {
         
         let deQueueOps = QueueOps(queue: DEQueue())
         deQueueOps.run()
+    }
+    
+    func treeOperations() {
+        let bstOps = BSTOps()
+        
+        var bst = bstOps.createBST()
+        bst = bstOps.insert(values: [5, 6, 4, 3], tree: bst)
+        bst.printTree()
+//        bst = bstOps.insert(value: 5, tree: bst)
+//        bst = bstOps.insert(value: 6, tree: bst)
+//        bst = bstOps.insert(value: 4, tree: bst)
     }
     
     func createLinkedList() -> LinkedList {
